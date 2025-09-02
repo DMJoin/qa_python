@@ -75,8 +75,10 @@ class TestBooksCollector:
         collector.add_book_in_favorites('Книга')
         collector.delete_book_from_favorites('Книга')
         assert collector.get_list_of_favorites_books() == []
-
-    # получение пустого списка, если в списке избранного не добавлены книги
-    def test_get_list_of_favorites_books_empty_list_if_favorites_empty(self):
+    
+    # получение избранного списка с одной книгой 
+    def test_get_list_of_favorites_books_with_one_book(self):
         collector = BooksCollector()
-        assert collector.get_list_of_favorites_books() == []
+        collector.add_new_book('Звёздные войны')
+        collector.add_book_in_favorites('Звёздные войны')
+        assert collector.get_list_of_favorites_books() == ['Звёздные войны']
