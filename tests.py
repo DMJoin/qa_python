@@ -45,11 +45,13 @@ class TestBooksCollector:
         collector.set_book_genre('Дюна', 'Фантастика')
         result = collector.get_books_with_specific_genre('Фантастика')
         assert result == ['Дюна']
-    
-    # получение пустого словаря если книги не добавлены
-    def test_get_books_genre_empty_dict_if_not_books(self):
+
+     # получение словаря с одной книгой
+    def test_get_books_genre_with_one_book(self):
         collector = BooksCollector()
-        assert collector.get_books_genre() == {}
+        collector.add_new_book('Звёздные войны')
+        collector.set_book_genre('Звёздные войны','Фантастика')
+        assert collector.get_books_genre() == {'Звёздные войны': 'Фантастика'}
 
     # получение книг, которые подходят детям
     @pytest.mark.parametrize('name, genre, access_for_children', [['Оно', 'Ужасы', False], ['Шерлок Холмс', 'Детективы', False], ['Один дома', 'Комедии', True], ['Ну, погоди!', 'Мультфильмы', True]])
