@@ -42,7 +42,11 @@ class TestBooksCollector:
     def test_get_books_with_specific_genre_list_book_by_genre(self):
         collector = BooksCollector()
         collector.add_new_book('Дюна')
+        collector.add_new_book('Убийство в Восточном экспрессе')
+        collector.add_new_book('Молчание ягнят')
         collector.set_book_genre('Дюна', 'Фантастика')
+        collector.set_book_genre('Убийство в Восточном экспрессе', 'Детективы')
+        collector.set_book_genre('Молчание ягнят', 'Ужасы')
         result = collector.get_books_with_specific_genre('Фантастика')
         assert result == ['Дюна']
 
